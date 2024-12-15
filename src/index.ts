@@ -6,7 +6,7 @@ const app = express()
 const server = createServer(app)
 const io = new Server(server, {
   cors: {
-    origin: 'http://localhost:5173',
+    origin: 'https://vkarchevskyi.github.io:443',
     methods: ['GET', 'POST'],
   },
 })
@@ -162,8 +162,8 @@ io.on('connection', (socket) => {
     })
   })
 
-  socket.on('restart-game', (roomCode: string) => {
-    const game = games.get(roomCode)
+  socket.on('restart-game', (data: {roomCode: string}) => {
+    const game = games.get(data.roomCode)
     if (game && game.gameOver) {
       game.board = getDefaultBoard()
       game.currentPlayer = 'X'
@@ -172,8 +172,8 @@ io.on('connection', (socket) => {
       game.winner = null
       game.isTie = false
 
-      io.to(roomCode).emit('game-restarted', {
-        roomCode,
+      io.to(data.roomCode).emit('game-restarted', {
+        roomCode: data.roomCode,
         board: game.board,
         currentPlayer: game.currentPlayer,
         currentBoard: game.currentBoard,
