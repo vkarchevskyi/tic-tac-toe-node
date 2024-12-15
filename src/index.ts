@@ -200,8 +200,8 @@ io.on('connection', (socket) => {
   })
 })
 
-server.listen(3000, () => {
-  console.log('server running at http://localhost:3000')
+server.listen(443, () => {
+  console.log('server running at https://tic-tac-toe-node.vercel.app:443')
 })
 
 const boardSize: number = 9
