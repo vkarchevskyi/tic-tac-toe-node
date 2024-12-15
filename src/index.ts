@@ -4,9 +4,10 @@ import { Server } from 'socket.io'
 
 const app = express()
 const server = createServer(app)
+const port = 80
 const io = new Server(server, {
   cors: {
-    origin: 'https://vkarchevskyi.github.io:443',
+    origin: 'https://vkarchevskyi.github.io',
     methods: ['GET', 'POST'],
   },
 })
@@ -200,8 +201,8 @@ io.on('connection', (socket) => {
   })
 })
 
-server.listen(443, () => {
-  console.log('server running at https://tic-tac-toe-node.vercel.app:443')
+server.listen(port, () => {
+  console.log('server running at https://tic-tac-toe-node.vercel.app:80')
 })
 
 const boardSize: number = 9
