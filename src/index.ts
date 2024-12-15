@@ -335,6 +335,3 @@ const canMoveToSmallBoard = (board: SmallBoard): boolean => {
 
   return emptyCells > 0 && !checkSmallBoardWin(board, 'X') && !checkSmallBoardWin(board, 'O')
 }
-function cors(): any {
-  throw new Error('Function not implemented.')
-}
