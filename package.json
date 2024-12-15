@@ -1,0 +1,20 @@
+{
+  "name": "ultimate-tic-tac-toe-node-backend",
+  "version": "0.0.1",
+  "description": "Ultimate Tic-Tac-Toe backend on NodeJS",
+  "type": "module",
+  "dependencies": {
+    "express": "^5.0.1",
+    "vercel": "^39.2.2"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2"
+  },
+  "scripts": {
+    "build": "npx tsc",
+    "start": "node dist/index.js",
+    "dev": "deno src/index.ts --watch"
+  }
+}
