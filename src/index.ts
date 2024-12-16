@@ -4,11 +4,11 @@ import { Server } from 'socket.io'
 
 const app = express()
 const server = createServer(app)
-const port = 80
+const port = 3000
 const io = new Server(server, {
   cors: {
-    origin: 'https://vkarchevskyi.github.io',
-    methods: ['GET', 'POST'],
+    origin: '*',
+    methods: ['GET', 'POST', 'OPTIONS'],
   },
 })
 
@@ -163,7 +163,7 @@ io.on('connection', (socket) => {
     })
   })
 
-  socket.on('restart-game', (data: {roomCode: string}) => {
+  socket.on('restart-game', (data: { roomCode: string }) => {
     const game = games.get(data.roomCode)
     if (game && game.gameOver) {
       game.board = getDefaultBoard()
@@ -202,7 +202,7 @@ io.on('connection', (socket) => {
 })
 
 server.listen(port, () => {
-  console.log('server running at https://tic-tac-toe-node.vercel.app:80')
+  console.log('server running at http://localhost:' + port)
 })
 
 const boardSize: number = 9
